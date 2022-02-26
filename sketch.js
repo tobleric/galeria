@@ -378,10 +378,10 @@ function draw()
 	proj12.display();
 	proj13.display();
 
-	push()
-	rotateX(-PI/2)
-	projMirror.display();
-	pop()
+	// push()
+	// rotateX(-PI/2)
+	// projMirror.display();
+	// pop()
 
 
 // 	// /*Zoom in Funktion*/
