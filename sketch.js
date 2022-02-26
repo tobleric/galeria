@@ -106,7 +106,7 @@ function setup()
 	proj13 = new Frame(400, 400, 2, -width * 2 + width / 2, floorY -110, - (width * 2) + 100, startText);
 
 	//Mirror
-	projMirror = new Frame(5, width / 5, width / 7, -width * 2 + 15, 0, 0, mirror);
+	// projMirror = new Frame(5, width / 5, width / 7, -width * 2 + 15, 0, 0, mirror);
 
 
 }
