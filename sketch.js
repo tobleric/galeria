@@ -75,7 +75,7 @@ function setup()
 {
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	//Mirror
-	mirror = createCapture(VIDEO)
+	// mirror = createCapture(VIDEO)
 
 	// /*Anleitung*/
 	startText = createGraphics(400, 400)
