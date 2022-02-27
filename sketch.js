@@ -415,7 +415,14 @@ function mouseWheel(event) {
 
 	//event.delta vermindern
 	let scrollB = event.delta
-	scrollProg += scrollB;
+
+	if (scrollB > 20) {	
+		scrollB = 20;
+	}
+
+	if (scrollB < -20) {
+		scrollB = -20
+	}
 
 	/*CamTurn XL*/
 	if (centerZ <= -mainTrack) {
@@ -464,6 +471,8 @@ function mouseWheel(event) {
 			camZ -= scrollB
 		}
 	}
+
+	console.log(scrollB)
 
 }
 
