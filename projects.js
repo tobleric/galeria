@@ -17,12 +17,4 @@ class Frame {
         pop()
     }
 
-    zoomInX() {
-
-        if (scrollProg >= width && scrollProg <= width * 2) {
-            background(255, 0, 0);
-        
-        }
-    }
-
 }

@@ -11,10 +11,11 @@ let proj9;
 let proj10;
 let proj11;
 let proj12;
+let proj14;
 let mandalorian;
 let startText;
-let mirror;
 let projMirror;
+let mirror;
 
 /*Scroll Fortschritt*/
 let scrollProg = 0;
@@ -25,7 +26,7 @@ let wallTex1;
 let boxSize1 = window.innerHeight/4
 let boxSize2 = window.innerWidth / 4 - 50
 
-/*Wall Cam distance*/
+/*Wall Cam distanz*/
 let cwDist = window.innerHeight
 
 //Wall Width
@@ -64,11 +65,13 @@ function preload() {
 	proj10_tex = loadImage('assets/wave2.png');
 	proj11_tex = loadImage('assets/wave3.png');
 	proj12_tex = loadImage('assets/lava.gif');
+	proj14_tex = loadImage('assets/3d-clock.gif');
 	mandalorian = loadModel('assets/mandalorian-helmet.obj', true)
 	wallTex1 = loadImage('assets/beton-2-4.jpg')
 	wallTex2 = loadImage('assets/wallTex.jpg')
 	wallTex3 = loadImage('assets/beton-1.jpg')
 	wallTex4 = loadImage('assets/wallTex2.jpg')
+	wallTex5 = loadImage('assets/mtex_med_15289.jpg')
 }
 
 function setup() 
@@ -95,18 +98,19 @@ function setup()
 	proj4 = new Frame(boxSize2, boxSize2, 20, width - width / 8, 0, - (width * 2) - 190, proj4_tex);
 	proj5 = new Frame(10, boxSize1, boxSize1, wallW / 2 - 100, height / 4, - width / 2, proj5_tex);
 	proj6 = new Frame(20, width / 2 - 60, width / 2 - 60, wallW / 2 + 200, floorY - (height / 2) -10, width / 2, proj6_tex);
-	proj7 = new Frame(1, width / 3, width / 3, wallW / 2 - 120, height / 4 - height/20, wallW / 2 - width / 2, proj7_tex);
+	proj7 = new Frame(1, width / 3 -100, width / 3, wallW / 2 - 120, height / 4 - height/20, wallW / 2 - width / 2, proj7_tex);
 	proj8 = new Frame(width / 2 - width / 20, width / 2  - width / 20, 20, width + width / 4, 0, wallW / 2 + 780, proj8_tex);
 	proj9 = new Frame(boxSize1, boxSize1, 20, -width - width / 2, height / 4, wallW / 2, proj9_tex);
 	proj10 = new Frame(boxSize1, boxSize1, 20, -width - width / 4, height / 4, wallW / 2, proj10_tex);
 	proj11 = new Frame(boxSize1, boxSize1, 20, -width, height / 4, wallW / 2, proj11_tex);
 	proj12 = new Frame(height, height, 20, 0, 0, wallW / 2 + 280, proj12_tex);
+	proj14 = new Frame(20, width / 4, width / 4, -width * 2 + 40, 0, 0, proj14_tex);
 
 	//WallText
 	proj13 = new Frame(400, 400, 2, -width * 2 + width / 2, floorY -110, - (width * 2) + 100, startText);
 
 	//Mirror
-	projMirror = new Frame(5, width / 5, width / 7, -width * 2 + 15, 0, 0, mirror);
+	projMirror = new Frame(5, width / 5, width / 7, -width * 2 + 40, 0, -width, mirror);
 
 
 }
@@ -258,7 +262,7 @@ function draw()
 
 	/*wall 2.4.1*/
 	push()
-	texture(wallTex2)
+	fill(55)
 	translate(wallW / 2 - 100, height / 4, wallW / 2 - width / 2)
 	box(20, height / 2, width / 3)
 
@@ -336,7 +340,7 @@ function draw()
 	// wall 4.2
 	push()
 	// texture(wallTex4)
-	fill(0)
+	texture(wallTex5)
 	translate(-width * 2 + 20, 0, width + width / 4)
 	box(20, height, width / 2)
 
@@ -344,7 +348,7 @@ function draw()
 		translate(100, floorY - (height / 8) -10, 0) //Formel um Objekte auf Boden zu stellen
 		box(100, height / 4, 100)
 
-	pop() 
+	pop()
 
 	/*project mando*/
 	push()
@@ -358,6 +362,25 @@ function draw()
 	model(mandalorian)
 	pop()
 
+		// wall 4.2
+	push()
+	// texture(wallTex4)
+	texture(wallTex5)
+	translate(-width * 2 + 20, 0, width + width / 4)
+	box(20, height, width / 2)
+
+		texture(wallTex4)
+		translate(100, floorY - (height / 8) -10, 0) //Formel um Objekte auf Boden zu stellen
+		box(100, height / 4, 100)
+
+	pop()
+
+	// wall 4.3
+	push()
+	texture(wallTex5)
+	translate(-width * 2 + 20, 0, 0)
+	box(20, height, width / 2)
+	pop()
 
 /*-------------------------Frames--------------------------*/
 
@@ -377,25 +400,16 @@ function draw()
 	proj11.display();
 	proj12.display();
 	proj13.display();
+	proj14.display();
 
 	push()
-	rotateX(-PI/2)
+	// rotateX(-PI/2)
 	projMirror.display();
 	pop()
 
-
-// 	// /*Zoom in Funktion*/
-// function zoomX(){
-// 	if (scrollProg >= width - cwDist && scrollProg <= width * 2) {
-// 		camZ -= frameCount/200
-// 		}
-// 	}
-// 	// proj1.zoomInX()
-// 	zoomX()
-
 }
 
-/*Cam walks by scrolling */
+/*Cam fährt bei scrolling */
 
 function mouseWheel(event) {
 
@@ -405,7 +419,7 @@ function mouseWheel(event) {
 
 	/*CamTurn XL*/
 	if (centerZ <= -mainTrack) {
-		// Cam stays on same spot on Z-axis
+		// Cam bleibt auf gleichem Punkt stehen auf Z-axis
 		camZ = -mainTrack;
 		centerX += scrollB
 			
@@ -417,7 +431,7 @@ function mouseWheel(event) {
 
 	/*CamTurn ZR*/
 	if (centerX >= mainTrack ) {
-		// Cam stays on same spot on x-axis
+		// Cam bleibt auf gleichem Punkt stehen X-axis
 		camX = mainTrack;
 		centerZ += scrollB
 		
@@ -429,7 +443,7 @@ function mouseWheel(event) {
 
 	/*CamTurn XR*/
 	if (centerZ >= mainTrack) {
-		// Cam stays on same spot on Z-axis
+		// Cam bleibt auf gleichem Punkt stehen Z-axis
 		camZ = mainTrack;
 		centerX -= scrollB
 		
@@ -441,7 +455,7 @@ function mouseWheel(event) {
 
 	/*CamTurn ZL*/
 	if (centerX <= -mainTrack) {
-		// Cam stays on same spot on X-axis
+		// Cam bleibt auf gleichem Punkt stehen X-axis
 		camX = -mainTrack;
 		centerZ -= scrollB
 			
