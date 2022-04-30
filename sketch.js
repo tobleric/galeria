@@ -14,8 +14,8 @@ let proj12;
 let proj14;
 let mandalorian;
 let startText;
-let projMirror;
-let mirror;
+// let projMirror;
+// let mirror;
 
 /*Scroll Fortschritt*/
 let scrollProg = 0;
@@ -78,7 +78,7 @@ function setup()
 {
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	//Mirror
-	mirror = createCapture(VIDEO)
+	// mirror = createCapture(VIDEO)
 
 	// /*Anleitung*/
 	startText = createGraphics(400, 400)
@@ -110,7 +110,7 @@ function setup()
 	proj13 = new Frame(400, 400, 2, -width * 2 + width / 2, floorY -110, - (width * 2) + 100, startText);
 
 	//Mirror
-	projMirror = new Frame(5, width / 5, width / 7, -width * 2 + 40, 0, -width, mirror);
+	// projMirror = new Frame(5, width / 5, width / 7, -width * 2 + 40, 0, -width, mirror);
 
 
 }
@@ -402,10 +402,10 @@ function draw()
 	proj13.display();
 	proj14.display();
 
-	push()
-	// rotateX(-PI/2)
-	projMirror.display();
-	pop()
+	// push()
+	// // rotateX(-PI/2)
+	// projMirror.display();
+	// pop()
 
 }
 
